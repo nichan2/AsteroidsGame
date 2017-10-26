@@ -1,10 +1,20 @@
-//your variable declarations here
+Spaceship one = new Spaceship();
+
 public void setup() 
 {
-  //your code here
+  size(800,800);
+  one = new Spaceship();
 }
 public void draw() 
 {
-  //your code here
+  one.show();
+
+}
+public void keyPressed()
+{
+	if(key == 'h')
+	{
+		one.accelerate(10);
+	}
 }
 
