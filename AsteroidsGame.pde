@@ -17,24 +17,38 @@ public void keyPressed()
 	if(key == 'h') //hyperspace
 	{
 		//System.out.println("nnn");
+		one.setDirectionX(0);
+		one.setDirectionY(0);
+		one.setPointDirection((int)(Math.random()*360));
 		one.setX((int)(Math.random()*800));
 		one.setY((int)(Math.random()*800));
+
 	}
 	if(key == 'w') //accelerate
 	{
-		one.accelerate(10);
+		one.accelerate(1);
 	}
-	if(key == 's') //accelerate
+	if(key == 's') //decelerate
 	{
-		one.accelerate(-10);
+		
+		if(((one.getDirectionX() != 0) || (one.getDirectionY() != 0)) || ((one.getDirectionX() != 0) || (one.getDirectionY() != 0)) )
+		{
+			one.accelerate(-1);
+			
+		}
+		else
+		{
+			one.setDirectionX(0);
+			one.setDirectionY(0);
+		}
 	}
 	if(key == 'a') //turn left
 	{
-		one.turn(-10);
+		one.turn(-15);
 	}
 	if(key == 'd') //turn right
 	{
-		one.turn(10);
+		one.turn(15);
 	}
 }
 
