@@ -1,22 +1,26 @@
 Spaceship one = new Spaceship();
+Stars[] starsNum = new Stars[100];
 
 public void setup() 
 {
   size(800,800);
+  background(0);
   one = new Spaceship();
-  for(int i = 0; i < 20; i++)
-		{
-			fill(255);
-			ellipse((int)(Math.random()*800),(int)(Math.random()*800),10,10);
-		}
+  for(int i = 0;i < 100; i++)
+  {	
+  	starsNum[i] = new Stars();
+  }
 }
 public void draw() 
 {
-background(0);
+	background(0);
+	for(int i = 0; i < 100; i++)
+	{
+		starsNum[i].show();
+	}
+ 	one.show();
 
-  one.show();
-  one.move();
-
+ 	one.move();
 }
 public void keyPressed()
 {
