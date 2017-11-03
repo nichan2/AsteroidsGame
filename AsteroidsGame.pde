@@ -38,20 +38,20 @@ public void keyPressed()
 	{
 		one.accelerate(1);
 	}
-	//if(key == 's') //decelerate
-	//{
+	if(key == 's') //decelerate
+	{
 		
-		//if(((one.getDirectionX() != 0) || (one.getDirectionY() != 0)) || ((one.getDirectionX() != 0) || (one.getDirectionY() != 0)) )
-		//{
-			//one.accelerate(-1);
-			
-		//}
-		//else
-		//{
-			//one.setDirectionX(0);
-			//one.setDirectionY(0);
-		//}
-	//}
+		if( ((one.getDirectionX() > -1) && (one.getDirectionX() < 1)) || ((one.getDirectionY() > -1) && (one.getDirectionY() < 1)) )
+
+		{
+			one.setDirectionX(0);
+			one.setDirectionY(0);			
+		}
+		else
+		{
+			one.accelerate(-1);
+		}
+	}
 	if(key == 'a') //turn left
 	{
 		one.turn(-15);
