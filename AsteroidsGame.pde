@@ -1,11 +1,12 @@
 Spaceship one = new Spaceship();
+Asteroids gg = new Asteroids();
 Stars[] starsNum = new Stars[100];
 
 public void setup() 
 {
   size(800,800);
   background(0);
-  one = new Spaceship();
+  //one = new Spaceship();
   for(int i = 0;i < 100; i++)
   {	
   	starsNum[i] = new Stars();
@@ -19,8 +20,10 @@ public void draw()
 		starsNum[i].show();
 	}
  	one.show();
-
  	one.move();
+ 	gg.show();
+ 	gg.move();
+
 }
 public void keyPressed()
 {
@@ -38,20 +41,20 @@ public void keyPressed()
 	{
 		one.accelerate(1);
 	}
-	if(key == 's') //decelerate
-	{
+	//if(key == 's') //decelerate
+	//{
 		
-		if( ((one.getDirectionX() > -1) && (one.getDirectionX() < 1)) || ((one.getDirectionY() > -1) && (one.getDirectionY() < 1)) )
+		//if( ((one.getDirectionX() > -1) && (one.getDirectionX() < 1)) || ((one.getDirectionY() > -1) && (one.getDirectionY() < 1)) )
 
-		{
-			one.setDirectionX(0);
-			one.setDirectionY(0);			
-		}
-		else
-		{
-			one.accelerate(-1);
-		}
-	}
+		//{
+			//one.setDirectionX(0);
+			//one.setDirectionY(0);			
+		//}
+		//else
+		//{
+			//one.accelerate(-1);
+		//}
+	//}
 	if(key == 'a') //turn left
 	{
 		one.turn(-15);
