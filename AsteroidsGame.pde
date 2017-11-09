@@ -39,7 +39,7 @@ public void keyPressed()
 	}
 	if(key == 'w') //accelerate
 	{
-		one.accelerate(1);
+		one.accelerate(0.5);
 	}
 	//if(key == 's') //decelerate
 	//{
