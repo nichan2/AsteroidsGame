@@ -1,5 +1,6 @@
 Spaceship one = new Spaceship();
 Asteroids gg = new Asteroids();
+Asteroids ggg [] = new Asteroids[20];
 Stars[] starsNum = new Stars[100];
 
 public void setup() 
@@ -7,22 +8,16 @@ public void setup()
   size(800,800);
   background(0);
   //one = new Spaceship();
-  for(int i = 0;i < 100; i++)
-  {	
-  	starsNum[i] = new Stars();
-  }
+  for(int i = 0;i < starsNum.length; i++) {starsNum[i] = new Stars();}
+  for(int i = 0; i < ggg.length; i++) {ggg[i] = new Asteroids();}
 }
 public void draw() 
 {
 	background(0);
-	for(int i = 0; i < 100; i++)
-	{
-		starsNum[i].show();
-	}
+	for(int i = 0; i < starsNum.length; i++) {starsNum[i].show();}
+	for(int i = 0; i < ggg.length; i++) {ggg[i].show(); ggg[i].move();}
  	one.show();
  	one.move();
- 	gg.show();
- 	gg.move();
 
 }
 public void keyPressed()
