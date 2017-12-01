@@ -21,14 +21,13 @@ class Asteroids extends Floater
         else if(variab < 75) {asteroidsXSpawnCoord = 0; asteroidsYSpawnCoord = (int)(Math.random() * 800);}
         else {asteroidsXSpawnCoord = 800; asteroidsYSpawnCoord = (int)(Math.random() * 800);}
     	
-        corners = 12;
-    	xCorners = new int[corners];
-    	yCorners = new int[corners];
-    	int[] xS = {2,5,10,8,10,3,-6,-7,-6,-9,-11,-8};
+      corners = 12;
+      xCorners = new int[corners];
+      yCorners = new int[corners];
+      int[] xS = {2,5,10,8,10,3,-6,-7,-6,-9,-11,-8};
         int[] yS = {16,7,7,3,-10,-13,-10,-11,-3,0,4,18};
         xCorners = xS;
         yCorners = yS;
- 
     	
         myColor = 255;
     	myCenterY = 0 + asteroidsYSpawnCoord;

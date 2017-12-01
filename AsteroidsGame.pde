@@ -1,6 +1,5 @@
 Spaceship one = new Spaceship();
-Asteroids gg = new Asteroids();
-Asteroids ggg [] = new Asteroids[20];
+ArrayList<Asteroids> numAsteroids = new ArrayList<Asteroids>(); 
 Stars[] starsNum = new Stars[100];
 
 public void setup() 
@@ -9,16 +8,22 @@ public void setup()
   background(0);
   //one = new Spaceship();
   for(int i = 0;i < starsNum.length; i++) {starsNum[i] = new Stars();}
-  for(int i = 0; i < ggg.length; i++) {ggg[i] = new Asteroids();}
+  for(int i = 0; i < 20; i++) {numAsteroids.add(new Asteroids());}
 }
 public void draw() 
 {
 	background(0);
 	for(int i = 0; i < starsNum.length; i++) {starsNum[i].show();}
-	for(int i = 0; i < ggg.length; i++) {ggg[i].show(); ggg[i].move();}
+	for(int i = 0; i < numAsteroids.size(); i++) {numAsteroids.get(i).show(); numAsteroids.get(i).move();}
  	one.show();
  	one.move();
-
+  for(int i = 0; i < numAsteroids.size(); i++)
+  {
+    if(dist(numAsteroids.get(i).getX(),numAsteroids.get(i).getY(),one.getX(),one.getY()) < 25)
+    {
+      numAsteroids.remove(i);
+    }
+  }
 }
 public void keyPressed()
 {
@@ -59,4 +64,3 @@ public void keyPressed()
 		one.turn(15);
 	}
 }
-
