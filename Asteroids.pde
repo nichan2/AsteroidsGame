@@ -24,7 +24,7 @@ class Asteroids extends Floater
       corners = 12;
       xCorners = new int[corners];
       yCorners = new int[corners];
-      int[] xS = {2,5,10,8,(int)(Math.random()*10)+10,3,-6,-7,-6,-9,-11,-8};
+      int[] xS = {2,5,10,8,10,3,-6,-7,-6,-9,-11,-8};
         int[] yS = {16,7,7,3,-10,-13,-10,-11,-3,0,4,18};
         xCorners = xS;
         yCorners = yS;

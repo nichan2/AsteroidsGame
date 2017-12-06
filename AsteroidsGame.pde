@@ -1,6 +1,7 @@
 Spaceship one = new Spaceship();
 ArrayList<Asteroids> numAsteroids = new ArrayList<Asteroids>(); 
 Stars[] starsNum = new Stars[100];
+Bullet two = new Bullet(one);
 
 public void setup() 
 {
@@ -9,6 +10,7 @@ public void setup()
   //one = new Spaceship();
   for(int i = 0;i < starsNum.length; i++) {starsNum[i] = new Stars();}
   for(int i = 0; i < 20; i++) {numAsteroids.add(new Asteroids());}
+  	two.show();
 }
 public void draw() 
 {
@@ -24,9 +26,14 @@ public void draw()
       numAsteroids.remove(i);
     }
   }
+
+  two.move();
 }
 public void keyPressed()
 {
+	if(key == ' ')
+
+
 	if(key == 'h') //hyperspace
 	{
 		//System.out.println("nnn");
