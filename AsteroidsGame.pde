@@ -26,7 +26,7 @@ public void draw()
       numAsteroids.remove(i);
     }
   }
-
+  two.show();
   two.move();
 }
 public void keyPressed()
