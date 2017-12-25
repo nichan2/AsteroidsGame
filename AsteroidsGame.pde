@@ -1,7 +1,7 @@
 Spaceship one = new Spaceship();
 ArrayList<Asteroids> numAsteroids = new ArrayList<Asteroids>(); 
 Stars[] starsNum = new Stars[100];
-Bullet two = new Bullet(one);
+ArrayList<Bullet> numBullets = new ArrayList<Bullet>();
 
 public void setup() 
 {
@@ -10,7 +10,7 @@ public void setup()
   //one = new Spaceship();
   for(int i = 0;i < starsNum.length; i++) {starsNum[i] = new Stars();}
   for(int i = 0; i < 20; i++) {numAsteroids.add(new Asteroids());}
-  	two.show();
+
 }
 public void draw() 
 {
@@ -26,8 +26,11 @@ public void draw()
       numAsteroids.remove(i);
     }
   }
-  two.show();
-  two.move();
+  for(int i = 0;i < numBullets.size(); i++)
+  {
+  	numBullets.get(i).show();
+  	numBullets.get(i).move();
+  }
 }
 public void keyPressed()
 {
@@ -69,5 +72,10 @@ public void keyPressed()
 	if(key == 'd') //turn right
 	{
 		one.turn(15);
+	}
+	if(key == ' ')
+	{
+		numBullets.add(new Bullet(one));
+		System.out.println("fkjkldsfj");
 	}
 }
