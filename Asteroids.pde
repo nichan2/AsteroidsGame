@@ -29,7 +29,9 @@ class Asteroids extends Floater
         xCorners = xS;
         yCorners = yS;
     	
-        myColor = 255;
+        myColor = 128;
+        myColor2=128;
+        myColor3=128;
     	myCenterY = 0 + asteroidsYSpawnCoord;
     	myCenterX = 0 + asteroidsXSpawnCoord;
     	myDirectionY = 0;

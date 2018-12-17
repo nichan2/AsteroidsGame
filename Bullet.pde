@@ -13,6 +13,7 @@ class Bullet extends Floater
     protected int x,y = 0;
 	Bullet(Spaceship theShip)
 	{
+    
 		myCenterX = theShip.getX();
 		myCenterY = theShip.getY();
 		myPointDirection = theShip.getPointDirection();
@@ -22,6 +23,9 @@ class Bullet extends Floater
 	}
 	public void show()
 	{
+  stroke(255,255,0);
+ 
+    fill(255,255,0);
 		ellipse((float)myCenterX,(float)myCenterY,(float)5,(float)5);
 	}
 	public void move()
