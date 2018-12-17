@@ -25,12 +25,21 @@ public void draw()
     {
       numAsteroids.remove(i);
     }
-  }
-  for(int i = 0;i < numBullets.size(); i++)
+    for(int k = 0;k < numBullets.size(); k++)
   {
-  	numBullets.get(i).show();
-  	numBullets.get(i).move();
+    numBullets.get(k).show();
+    numBullets.get(k).move();
+    if(dist(numAsteroids.get(i).getX(),numAsteroids.get(i).getY(),numBullets.get(k).getX(),numBullets.get(k).getY()) < 35)
+    {
+      numAsteroids.remove(i);
+      numBullets.remove(k);
+      numAsteroids.add(new Asteroids());
+    }
   }
+    
+  }
+  
+ 
 }
 public void keyPressed()
 {
@@ -76,6 +85,5 @@ public void keyPressed()
 	if(key == ' ')
 	{
 		numBullets.add(new Bullet(one));
-		System.out.println("fkjkldsfj");
 	}
 }
