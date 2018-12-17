@@ -2,6 +2,8 @@ Spaceship one = new Spaceship();
 ArrayList<Asteroids> numAsteroids = new ArrayList<Asteroids>(); 
 Stars[] starsNum = new Stars[100];
 ArrayList<Bullet> numBullets = new ArrayList<Bullet>();
+int numAsteroidsDestroyed = 0;
+int health = 100;
 
 public void setup() 
 {
@@ -24,6 +26,7 @@ public void draw()
     if(dist(numAsteroids.get(i).getX(),numAsteroids.get(i).getY(),one.getX(),one.getY()) < 25)
     {
       numAsteroids.remove(i);
+      health=health-10;
     }
     for(int k = 0;k < numBullets.size(); k++)
   {
@@ -34,6 +37,7 @@ public void draw()
       numAsteroids.remove(i);
       numBullets.remove(k);
       numAsteroids.add(new Asteroids());
+      numAsteroidsDestroyed++;
     }
   }
     
