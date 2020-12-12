@@ -2,7 +2,7 @@ Spaceship one = new Spaceship();
 ArrayList<Asteroids> numAsteroids = new ArrayList<Asteroids>(); 
 Stars[] starsNum = new Stars[100];
 ArrayList<Bullet> numBullets = new ArrayList<Bullet>();
-int numAsteroidsDestroyed = 0;
+int capped = 0;
 int health = 100;
 
 public void setup() 
@@ -16,11 +16,11 @@ public void setup()
 }
 public void draw() 
 {
-	background(0);
-	for(int i = 0; i < starsNum.length; i++) {starsNum[i].show();}
-	for(int i = 0; i < numAsteroids.size(); i++) {numAsteroids.get(i).show(); numAsteroids.get(i).move();}
- 	one.show();
- 	one.move();
+  background(0);
+  for(int i = 0; i < starsNum.length; i++) {starsNum[i].show();}
+  for(int i = 0; i < numAsteroids.size(); i++) {numAsteroids.get(i).show(); numAsteroids.get(i).move();}
+   one.show();
+   one.move();
   for(int i = 0; i < numAsteroids.size(); i++)
   {
     if(dist(numAsteroids.get(i).getX(),numAsteroids.get(i).getY(),one.getX(),one.getY()) < 25)
@@ -37,7 +37,7 @@ public void draw()
       numAsteroids.remove(i);
       numBullets.remove(k);
       numAsteroids.add(new Asteroids());
-      numAsteroidsDestroyed++;
+      capped++;
     }
   }
     
@@ -47,47 +47,34 @@ public void draw()
 }
 public void keyPressed()
 {
-	if(key == ' ')
+  if(key == ' ')
 
 
-	if(key == 'h') //hyperspace
-	{
-		//System.out.println("nnn");
-		one.setDirectionX(0);
-		one.setDirectionY(0);
-		one.setPointDirection((int)(Math.random()*360));
-		one.setX((int)(Math.random()*800));
-		one.setY((int)(Math.random()*800));
+  if(key == 'h') //hyperspace
+  {
+    //System.out.println("nnn");
+    one.setDirectionX(0);
+    one.setDirectionY(0);
+    one.setPointDirection((int)(Math.random()*360));
+    one.setx((int)(Math.random()*800));
+    one.setY((int)(Math.random()*800));
 
-	}
-	if(key == 'w') //accelerate
-	{
-		one.accelerate(0.5);
-	}
-	//if(key == 's') //decelerate
-	//{
-		
-		//if( ((one.getDirectionX() > -1) && (one.getDirectionX() < 1)) || ((one.getDirectionY() > -1) && (one.getDirectionY() < 1)) )
+  }
+  if(key == 'w') //accelerate
+  {
+    one.accelerate(0.5);
+  }
 
-		//{
-			//one.setDirectionX(0);
-			//one.setDirectionY(0);			
-		//}
-		//else
-		//{
-			//one.accelerate(-1);
-		//}
-	//}
-	if(key == 'a') //turn left
-	{
-		one.turn(-15);
-	}
-	if(key == 'd') //turn right
-	{
-		one.turn(15);
-	}
-	if(key == ' ')
-	{
-		numBullets.add(new Bullet(one));
-	}
+  if(key == 'a') //turn left
+  {
+    one.turn(-15);
+  }
+  if(key == 'd') //turn right
+  {
+    one.turn(15);
+  }
+  if(key == ' ')
+  {
+    numBullets.add(new Bullet(one));
+  }
 }
