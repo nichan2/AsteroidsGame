@@ -12,7 +12,8 @@ class Stars //note that this class does NOT extend Floater
     ellipse(x,y,(int)(Math.random()*8),(int)(Math.random()*8));
     textSize(40);
     text("HP: "+health,10,40);
-    text("Points: "+capped,10,90);
-    if(health <= 0) {textSize(50);fill(224, 170, 255);text("Try Again",150,400);}
-  }
+    text("Points: "+numAsteroidsDestroyed,10,90);
+    if(health <= 0) {textSize(100);fill(255,0,0);text("Try Again",150,400);}
 
+  }
+}
