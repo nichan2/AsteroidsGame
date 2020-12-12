@@ -2,7 +2,7 @@ Spaceship one = new Spaceship();
 ArrayList<Asteroids> numAsteroids = new ArrayList<Asteroids>(); 
 Stars[] starsNum = new Stars[100];
 ArrayList<Bullet> numBullets = new ArrayList<Bullet>();
-int capped = 0;
+int numAsteroidsDestroyed = 0;
 int health = 100;
 
 public void setup() 
@@ -37,7 +37,7 @@ public void draw()
       numAsteroids.remove(i);
       numBullets.remove(k);
       numAsteroids.add(new Asteroids());
-      capped++;
+      numAsteroidsDestroyed++;
     }
   }
     
@@ -57,7 +57,7 @@ public void keyPressed()
     one.setDirectionY(0);
     one.setPointDirection((int)(Math.random()*360));
     one.setx((int)(Math.random()*800));
-    one.setY((int)(Math.random()*800));
+    one.sety((int)(Math.random()*800));
 
   }
   if(key == 'w') //accelerate
