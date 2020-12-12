@@ -1,44 +1,93 @@
-Spaceship bob = new Spaceship();
-Stars[] nightSky = new Stars[100];
+Spaceship one = new Spaceship();
+ArrayList<Asteroids> numAsteroids = new ArrayList<Asteroids>(); 
+Stars[] starsNum = new Stars[100];
+ArrayList<Bullet> numBullets = new ArrayList<Bullet>();
+int numAsteroidsDestroyed = 0;
+int health = 100;
+
 public void setup() 
 {
-  size(500,500);
+  size(800,800);
   background(0);
-  //creates stars 
-  for(int i = 0;i < nightSky.length; i++){
-    nightSky[i] = new Stars();
-  }
-}
-public void draw() {
-  background(0);
-  //draws stars
-  for(int i = 0; i < nightSky.length; i++){
-  nightSky[i].show();
-  }
-  //draws spaceship
-  bob.show();
-  bob.move();
-}
+  //one = new Spaceship();
+  for(int i = 0;i < starsNum.length; i++) {starsNum[i] = new Stars();}
+  for(int i = 0; i < 20; i++) {numAsteroids.add(new Asteroids());}
 
-public void keyPressed(){
-  if(key == 'h') //hyperspace
+}
+public void draw() 
+{
+	background(0);
+	for(int i = 0; i < starsNum.length; i++) {starsNum[i].show();}
+	for(int i = 0; i < numAsteroids.size(); i++) {numAsteroids.get(i).show(); numAsteroids.get(i).move();}
+ 	one.show();
+ 	one.move();
+  for(int i = 0; i < numAsteroids.size(); i++)
   {
-    bob.setXspeed(0);
-    bob.setYspeed(0);
-    bob.hyperspaceX(Math.random()*500);
-    bob.hyperspaceY(Math.random()*500);
-    bob.direction(Math.random()*500);
-  }
-  if(key == 'w') //accelerate
+    if(dist(numAsteroids.get(i).getX(),numAsteroids.get(i).getY(),one.getX(),one.getY()) < 25)
+    {
+      numAsteroids.remove(i);
+      health=health-10;
+    }
+    for(int k = 0;k < numBullets.size(); k++)
   {
-    bob.accelerate(0.5);
+    numBullets.get(k).show();
+    numBullets.get(k).move();
+    if(dist(numAsteroids.get(i).getX(),numAsteroids.get(i).getY(),numBullets.get(k).getX(),numBullets.get(k).getY()) < 35)
+    {
+      numAsteroids.remove(i);
+      numBullets.remove(k);
+      numAsteroids.add(new Asteroids());
+      numAsteroidsDestroyed++;
+    }
   }
-  if(key == 'a') //turn left
-  {
-    bob.turn(-15);
+    
   }
-  if(key == 'd') //turn right
-  {
-    bob.turn(15);
-  }
+  
+ 
+}
+public void keyPressed()
+{
+	if(key == ' ')
+
+
+	if(key == 'h') //hyperspace
+	{
+		//System.out.println("nnn");
+		one.setDirectionX(0);
+		one.setDirectionY(0);
+		one.setPointDirection((int)(Math.random()*360));
+		one.setX((int)(Math.random()*800));
+		one.setY((int)(Math.random()*800));
+
+	}
+	if(key == 'w') //accelerate
+	{
+		one.accelerate(0.5);
+	}
+	//if(key == 's') //decelerate
+	//{
+		
+		//if( ((one.getDirectionX() > -1) && (one.getDirectionX() < 1)) || ((one.getDirectionY() > -1) && (one.getDirectionY() < 1)) )
+
+		//{
+			//one.setDirectionX(0);
+			//one.setDirectionY(0);			
+		//}
+		//else
+		//{
+			//one.accelerate(-1);
+		//}
+	//}
+	if(key == 'a') //turn left
+	{
+		one.turn(-15);
+	}
+	if(key == 'd') //turn right
+	{
+		one.turn(15);
+	}
+	if(key == ' ')
+	{
+		numBullets.add(new Bullet(one));
+	}
 }
