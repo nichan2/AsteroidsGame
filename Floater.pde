@@ -1,22 +1,22 @@
 abstract class Floater //Do NOT modify the Floater class! Make changes in the Spaceship class 
 {   
   protected int corners;  //the number of corners, a triangular floater has 3   
-  protected int[] xCorners;   
-  protected int[] yCorners;   
+  protected int[] cornerx;   
+  protected int[] cornery;   
   protected int Colour; 
   protected int Colour2;
   protected int Colour3;
-  protected double xcenter, ycenter; //holds center coordinates   
-  protected double xdirection, ydirection; //holds x and y coordinates of the vector for direction of travel   
+  protected double cenx, ceny; //holds center coordinates   
+  protected double myDirectionX, myDirectionY; //holds x and y coordinates of the vector for direction of travel   
   protected double myPointDirection; //holds current direction the ship is pointing in degrees    
   abstract public void setx(int x);  
   abstract public int getX();   
-  abstract public void setY(int y);   
+  abstract public void sety(int y);   
   abstract public int getY();   
   abstract public void setDirectionX(double x);   
-  abstract public double getDirectionX();   
+  abstract public double direcX();   
   abstract public void setDirectionY(double y);   
-  abstract public double getDirectionY();   
+  abstract public double direcy();   
   abstract public void setPointDirection(int degrees);   
   abstract public double getPointDirection(); 
 
@@ -26,8 +26,8 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     //convert the current direction the floater is pointing to radians    
     double dRadians =myPointDirection*(Math.PI/180);     
     //change coordinates of direction of travel    
-    xdirection += ((dAmount) * Math.cos(dRadians));    
-    ydirection += ((dAmount) * Math.sin(dRadians));       
+    myDirectionX += ((dAmount) * Math.cos(dRadians));    
+    myDirectionY += ((dAmount) * Math.sin(dRadians));       
   }   
   public void turn (int nDegreesOfRotation)   
   {     
@@ -36,27 +36,27 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   }   
   public void move ()   //move the floater in the current direction of travel
   {      
-    //change the x and y coordinates by xdirection and ydirection       
-    xcenter += xdirection;    
-    ycenter += ydirection;     
+    //change the x and y coordinates by myDirectionX and myDirectionY       
+    cenx += myDirectionX;    
+    ceny += myDirectionY;     
 
     //wrap around screen    
-    if(xcenter >width)
+    if(cenx >width)
     {     
-      xcenter = 0;    
+      cenx = 0;    
     }    
-    else if (xcenter<0)
+    else if (cenx<0)
     {     
-      xcenter = width;    
+      cenx = width;    
     }    
-    if(ycenter >height)
+    if(ceny >height)
     {    
-      ycenter = 0;    
+      ceny = 0;    
     } 
     
-    else if (ycenter < 0)
+    else if (ceny < 0)
     {     
-      ycenter = height;    
+      ceny = height;    
     }   
   }   
   public void show ()  //Draws the floater at the current position  
@@ -65,7 +65,7 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     stroke(Colour);    
     
     //translate the (x,y) center of the ship to the correct position
-    translate((float)xcenter, (float)ycenter);
+    translate((float)cenx, (float)ceny);
 
     //convert degrees to radians for rotate()     
     float dRadians = (float)(myPointDirection*(Math.PI/180));
@@ -77,12 +77,12 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     beginShape();
     for (int nI = 0; nI < corners; nI++)
     {
-      vertex(xCorners[nI], yCorners[nI]);
+      vertex(cornerx[nI], cornery[nI]);
     }
     endShape(CLOSE);
 
     //"unrotate" and "untranslate" in reverse order
     rotate(-1*dRadians);
-    translate(-1*(float)xcenter, -1*(float)ycenter);
+    translate(-1*(float)cenx, -1*(float)ceny);
   }   
 } 
