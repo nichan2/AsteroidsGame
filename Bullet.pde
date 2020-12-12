@@ -1,36 +1,36 @@
 class Bullet extends Floater
 {
-  public void setx(int x) {xcenter = x;}
-    public int getX() {return (int) xcenter;}
-    public void setY(int y) {ycenter = y;}
-    public int getY() {return (int) ycenter;}
-    public void setDirectionX(double x) {xdirection = x;}
-    public double getDirectionX() {return xdirection;}
-    public void setDirectionY(double y) {ydirection = y;}
-    public double getDirectionY() {return ydirection;}
+  public void setx(int x) {cenx = x;}
+    public int getX() {return (int) cenx;}
+    public void sety(int y) {ceny = y;}
+    public int getY() {return (int) ceny;}
+    public void setDirectionX(double x) {myDirectionX = x;}
+    public double direcX() {return myDirectionX;}
+    public void setDirectionY(double y) {myDirectionY = y;}
+    public double direcy() {return myDirectionY;}
     public void setPointDirection(int degrees) {myPointDirection = degrees;}   
     public double getPointDirection() {return myPointDirection;} 
     protected int x,y = 0;
   Bullet(Spaceship theShip)
   {
     
-    xcenter = theShip.getX();
-    ycenter = theShip.getY();
+    cenx = theShip.getX();
+    ceny = theShip.getY();
     myPointDirection = theShip.getPointDirection();
     double dRadians = myPointDirection*(Math.PI/180);
-    ydirection = 5*Math.sin(dRadians) + theShip.getDirectionY();
-    xdirection = 5*Math.cos(dRadians) + theShip.getDirectionX();
+    myDirectionY = 5*Math.sin(dRadians) + theShip.direcy();
+    myDirectionX = 5*Math.cos(dRadians) + theShip.direcX();
   }
   public void show()
   {
-  stroke(90,24,154);
+  stroke(247,37,133);
  
-    fill(90,24,154);
-    ellipse((float)xcenter,(float)ycenter,(float)5,(float)5);
+    fill(255,255,0);
+    ellipse((float)cenx,(float)ceny,(float)5,(float)5);
   }
   public void move()
   {
-    xcenter += xdirection;    
-      ycenter += ydirection;
+    cenx += myDirectionX;    
+      ceny += myDirectionY;
   }
 }
