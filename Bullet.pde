@@ -23,10 +23,10 @@ class Bullet extends Floater
   }
   public void show()
   {
-  stroke(247,37,133);
+  stroke(99,255,224);
  
-    fill(255,255,0);
-    ellipse((float)cenx,(float)ceny,(float)5,(float)5);
+    fill(99,255,224);
+    ellipse((float)cenx,(float)ceny,(float)20,(float)20);
   }
   public void move()
   {
