@@ -47,9 +47,6 @@ public void draw()
 }
 public void keyPressed()
 {
-  if(key == ' ')
-
-
   if(key == 'h') //hyperspace
   {
     //System.out.println("nnn");
