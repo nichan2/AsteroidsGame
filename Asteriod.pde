@@ -29,9 +29,9 @@ class Asteroids extends Floater
         cornerx = xS;
         cornery = yS;
       
-        Colour = 76;
-        Colour2=201;
-        Colour3=240;
+        Colour = 7;
+        Colour2=112;
+        Colour3=60;
       ceny = 0 + AY;
       cenx = 0 + AX;
       myDirectionY = 0;
