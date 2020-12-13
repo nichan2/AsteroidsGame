@@ -2,8 +2,8 @@ Spaceship one = new Spaceship();
 ArrayList<Asteroids> numAsteroids = new ArrayList<Asteroids>(); 
 Stars[] starsNum = new Stars[100];
 ArrayList<Bullet> numBullets = new ArrayList<Bullet>();
-int numAsteroidsDestroyed = 0;
-int health = 100;
+int Assdes = 0;
+int hp = 100;
 
 public void setup() 
 {
@@ -26,7 +26,7 @@ public void draw()
     if(dist(numAsteroids.get(i).getX(),numAsteroids.get(i).getY(),one.getX(),one.getY()) < 25)
     {
       numAsteroids.remove(i);
-      health=health-10;
+      hp=hp-10;
     }
     for(int k = 0;k < numBullets.size(); k++)
   {
@@ -37,7 +37,7 @@ public void draw()
       numAsteroids.remove(i);
       numBullets.remove(k);
       numAsteroids.add(new Asteroids());
-      numAsteroidsDestroyed++;
+      Assdes++;
     }
   }
     
@@ -53,8 +53,8 @@ public void keyPressed()
     one.setDirectionX(0);
     one.setDirectionY(0);
     one.setPointDirection((int)(Math.random()*360));
-    one.setx((int)(Math.random()*800));
-    one.sety((int)(Math.random()*800));
+    one.setX((int)(Math.random()*800));
+    one.setY((int)(Math.random()*800));
 
   }
   if(key == 'w') //accelerate
