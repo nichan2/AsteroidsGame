@@ -1,34 +1,34 @@
 class Spaceship extends Floater  
 {   
-    public void setx(int x) {cenx = x;}
-    public int getX() {return (int) cenx;}
-    public void sety(int y) {ceny = y;}
-    public int getY() {return (int) ceny;}
+    public void setX(int x) {myCenterX = x;}
+    public int getX() {return (int) myCenterX;}
+    public void setY(int y) {myCenterY = y;}
+    public int getY() {return (int) myCenterY;}
     public void setDirectionX(double x) {myDirectionX = x;}
-    public double direcX() {return myDirectionX;}
+    public double getDirectionX() {return myDirectionX;}
     public void setDirectionY(double y) {myDirectionY = y;}
-    public double direcy() {return myDirectionY;}
+    public double getDirectionY() {return myDirectionY;}
     public void setPointDirection(int degrees) {myPointDirection = degrees;}   
     public double getPointDirection() {return myPointDirection;}
 
     public Spaceship()
     {
       corners = 4;
-      cornerx = new int[corners];
-      cornery = new int[corners];
-      cornerx[0] = -8;
-      cornery[0] = -8;
-      cornerx[1] = 16;
-      cornery[1] = 0;
-      cornerx[2] = -8;
-      cornery[2] = 8;
-      cornerx[3] = -2;
-      cornery[3] = 0;
-      Colour = 237;
-      Colour2= 26;
-      Colour3=55;
-      ceny = 400;
-      cenx = 400;
+      xCorners = new int[corners];
+      yCorners = new int[corners];
+      xCorners[0] = -8;
+      yCorners[0] = -8;
+      xCorners[1] = 16;
+      yCorners[1] = 0;
+      xCorners[2] = -8;
+      yCorners[2] = 8;
+      xCorners[3] = -2;
+      yCorners[3] = 0;
+      myColor = 237;
+      myColor2= 26;
+      myColor3=55;
+      myCenterY = 400;
+      myCenterX = 400;
       myDirectionY = 0;
       myDirectionY = 0;
       myPointDirection = 0;
