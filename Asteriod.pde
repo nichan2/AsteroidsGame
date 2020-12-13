@@ -1,13 +1,13 @@
 class Asteroids extends Floater  
 {   
-    public void setx(int x) {cenx = x;}
-    public int getX() {return (int) cenx;}
-    public void sety(int y) {ceny = y;}
-    public int getY() {return (int) ceny;}
+    public void setX(int x) {myCenterX = x;}
+    public int getX() {return (int) myCenterX;}
+    public void setY(int y) {myCenterY = y;}
+    public int getY() {return (int) myCenterY;}
     public void setDirectionX(double x) {myDirectionX = x;}
-    public double direcX() {return myDirectionX;}
+    public double getDirectionX() {return myDirectionX;}
     public void setDirectionY(double y) {myDirectionY = y;}
-    public double direcy() {return myDirectionY;}
+    public double getDirectionY() {return myDirectionY;}
     public void setPointDirection(int degrees) {myPointDirection = degrees;}   
     public double getPointDirection() {return myPointDirection;} 
   protected int rotSpeed;
@@ -15,25 +15,25 @@ class Asteroids extends Floater
     private int AY, AX;
     public Asteroids()
     {   
-        int variab = (int)(Math.random()*100);
-        if(variab < 25) {AX = (int)(Math.random() * 800);}
-        else if(variab < 50) {AX = (int)(Math.random() * 800); AY = 800;}
-        else if(variab < 75) {AX = 0; AY = (int)(Math.random() * 800);}
+        int nick = (int)(Math.random()*100);
+        if(nick < 25) {AX = (int)(Math.random() * 800);}
+        else if(nick < 50) {AX = (int)(Math.random() * 800); AY = 800;}
+        else if(nick < 75) {AX = 0; AY = (int)(Math.random() * 800);}
         else {AX = 800; AY = (int)(Math.random() * 800);}
       
       corners = 12;
-      cornerx = new int[corners];
-      cornery = new int[corners];
+      xCorners = new int[corners];
+      yCorners = new int[corners];
       int[] xS = {2,5,10,8,10,3,-6,-7,-6,-9,-11,-8};
         int[] yS = {16,7,7,3,-10,-13,-10,-11,-3,0,4,18};
-        cornerx = xS;
-        cornery = yS;
+        xCorners = xS;
+        yCorners = yS;
       
-        Colour = 7;
-        Colour2=112;
-        Colour3=60;
-      ceny = 0 + AY;
-      cenx = 0 + AX;
+        myColor = 7;
+        myColor2=112;
+        myColor3=60;
+      myCenterY = 0 + AY;
+      myCenterX = 0 + AX;
       myDirectionY = 0;
       myDirectionY = 0;
       myPointDirection = 0;
