@@ -1,36 +1,88 @@
-class Spaceship extends Floater  
+abstract class Floater //Do NOT modify the Floater class! Make changes in the Spaceship class 
 {   
-    public void setx(int x) {cenx = x;}
-    public int getX() {return (int) cenx;}
-    public void sety(int y) {ceny = y;}
-    public int getY() {return (int) ceny;}
-    public void setDirectionX(double x) {myDirectionX = x;}
-    public double direcX() {return myDirectionX;}
-    public void setDirectionY(double y) {myDirectionY = y;}
-    public double direcy() {return myDirectionY;}
-    public void setPointDirection(int degrees) {myPointDirection = degrees;}   
-    public double getPointDirection() {return myPointDirection;}
+  protected int corners;  //the number of corners, a triangular floater has 3   
+  protected int[] cornerx;   
+  protected int[] cornery;   
+  protected int Colour; 
+  protected int Colour2;
+  protected int Colour3;
+  protected double cenx, ceny; //holds center coordinates   
+  protected double myDirectionX, myDirectionY; //holds x and y coordinates of the vector for direction of travel   
+  protected double myPointDirection; //holds current direction the ship is pointing in degrees    
+  abstract public void setx(int x);  
+  abstract public int getX();   
+  abstract public void sety(int y);   
+  abstract public int getY();   
+  abstract public void setDirectionX(double x);   
+  abstract public double direcX();   
+  abstract public void setDirectionY(double y);   
+  abstract public double direcy();   
+  abstract public void setPointDirection(int degrees);   
+  abstract public double getPointDirection(); 
 
-    public Spaceship()
+  //Accelerates the floater in the direction it is pointing (myPointDirection)   
+  public void accelerate (double dAmount)   
+  {          
+    //convert the current direction the floater is pointing to radians    
+    double dRadians =myPointDirection*(Math.PI/180);     
+    //change coordinates of direction of travel    
+    myDirectionX += ((dAmount) * Math.cos(dRadians));    
+    myDirectionY += ((dAmount) * Math.sin(dRadians));       
+  }   
+  public void turn (int nDegreesOfRotation)   
+  {     
+    //rotates the floater by a given number of degrees    
+    myPointDirection+=nDegreesOfRotation;   
+  }   
+  public void move ()   //move the floater in the current direction of travel
+  {      
+    //change the x and y coordinates by myDirectionX and myDirectionY       
+    cenx += myDirectionX;    
+    ceny += myDirectionY;     
+
+    //wrap around screen    
+    if(cenx >width)
+    {     
+      cenx = 0;    
+    }    
+    else if (cenx<0)
+    {     
+      cenx = width;    
+    }    
+    if(ceny >height)
+    {    
+      ceny = 0;    
+    } 
+    
+    else if (ceny < 0)
+    {     
+      ceny = height;    
+    }   
+  }   
+  public void show ()  //Draws the floater at the current position  
+  {             
+    fill(Colour,Colour2,Colour3);   
+    stroke(Colour);    
+    
+    //translate the (x,y) center of the ship to the correct position
+    translate((float)cenx, (float)ceny);
+
+    //convert degrees to radians for rotate()     
+    float dRadians = (float)(myPointDirection*(Math.PI/180));
+    
+    //rotate so that the polygon will be drawn in the correct direction
+    rotate(dRadians);
+    
+    //draw the polygon
+    beginShape();
+    for (int nI = 0; nI < corners; nI++)
     {
-      corners = 4;
-      cornerx = new int[corners];
-      cornery = new int[corners];
-      cornerx[0] = -8;
-      cornery[0] = -8;
-      cornerx[1] = 16;
-      cornery[1] = 0;
-      cornerx[2] = -8;
-      cornery[2] = 8;
-      cornerx[3] = -2;
-      cornery[3] = 0;
-      Colour = 181;
-      Colour2= 23;
-      Colour3=153;
-      ceny = 400;
-      cenx = 400;
-      myDirectionY = 0;
-      myDirectionY = 0;
-      myPointDirection = 0;
+      vertex(cornerx[nI], cornery[nI]);
     }
-}
+    endShape(CLOSE);
+
+    //"unrotate" and "untranslate" in reverse order
+    rotate(-1*dRadians);
+    translate(-1*(float)cenx, -1*(float)ceny);
+  }   
+} 
