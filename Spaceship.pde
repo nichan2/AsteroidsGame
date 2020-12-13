@@ -24,9 +24,9 @@ class Spaceship extends Floater
       cornery[2] = 8;
       cornerx[3] = -2;
       cornery[3] = 0;
-      Colour = 181;
-      Colour2= 23;
-      Colour3=153;
+      Colour = 237;
+      Colour2= 26;
+      Colour3=55;
       ceny = 400;
       cenx = 400;
       myDirectionY = 0;
